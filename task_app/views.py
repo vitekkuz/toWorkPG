@@ -24,6 +24,7 @@ def index(request):
     arias = Aria.objects.all()
     districts = District.objects.all()
     sex = Sex.objects.all()
+    usrForm = UserForm()
     context = {'users': users,
                'surnames': surnames,
                'middle_names': middle_names,
@@ -37,7 +38,7 @@ def index(request):
                'districts': districts,
                'add_prof_form': ProfessionForm(),
                'modify_prof_form': ProfessionForm(),
-               'form_add_user': UserForm(),
+               'form_add_user': usrForm,
                }
 
     return render(request, 'task_app/base.html', context=context)

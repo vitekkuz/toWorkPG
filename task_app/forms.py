@@ -83,7 +83,7 @@ class UserForm(forms.Form):
         max_length=16,
     )
     PROFESSIONS = [(a.text, a.text) for a in  Profession.objects.all()]
-    profession = forms.ChoiceField(
+    profession = forms.ModelChoiceField(
         widget=forms.Select(
             attrs={
                 'class': 'form-select',
@@ -91,7 +91,7 @@ class UserForm(forms.Form):
             }
         ),
         label='Профессия',
-        choices=PROFESSIONS,
+        queryset=Profession.objects.all(),
     )
 
 
