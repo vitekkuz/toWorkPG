@@ -12,15 +12,16 @@ var term2 = '';
 
 
 function dosearch() {
-    term = jQuery('#spterm').val();
+    term = jQuery('#spterm').val().trim();
     $('#table_users').find('tr').each(function() {
-        var td = $(this).children("td:first");
-        surname = jQuery(this).find("td:first");
-        surname = $(surname).html();
-        if (surname)
-            if (surname.indexOf(term) == -1)
-                jQuery(this).css('visibility', 'collapse');
-
+        jQuery(this).css('visibility', 'collapse');
+        $(this).find("td").each(function() {
+            surname = $(this).html();
+            if (surname)
+                if (surname.indexOf(term) !== -1) {
+                    jQuery(this).parents('tr').first().css('visibility', '');
+                }
+        })
     })
 };
 
